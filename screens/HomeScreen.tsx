@@ -34,7 +34,7 @@ function HomeScreen() {
           flexDirection: "row",
           alignItems: "center",
           paddingHorizontal: wp(3),
-          paddingBottom: hp(1),
+          paddingBottom: hp(0.4),
         }}
       >
         {/* Search Bar */}
