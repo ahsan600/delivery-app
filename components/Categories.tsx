@@ -1,18 +1,10 @@
 import React, { useState } from "react";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import {
-  Image,
-  ScrollView,
-  Text,
-  Touchable,
-  TouchableHighlight,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { categories } from "~/dummyData/data";
-import {
-  widthPercentageToDP as wp,
   heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
+import { categories } from "~/dummyData/data";
 function Categories() {
   const [selectCategory, setSelectCategory] = useState<number>();
   const handleSelectCategory = (category: number) => {
