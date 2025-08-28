@@ -6,15 +6,22 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
+import { useDispatch } from "react-redux";
+import { selectRestaurant } from "~/redux/slice/restaurantSlice";
 import { themeColors } from "~/theme/themeColors";
 import { RestaurantType } from "~/types/restaurants";
 
 function RestaurantCard({ restaurant }: { restaurant: RestaurantType }) {
   const navigation: any = useNavigation();
+  const dispatch = useDispatch();
+  const handleSelectRestaurant = (restaurant: RestaurantType) => {
+    dispatch(selectRestaurant(restaurant));
+    navigation.navigate("Restaurant");
+  };
   return (
     <TouchableOpacity
       className="flex-1 rounded-xl gap-2  bg-white"
-      onPress={() => navigation.navigate("Restaurant", { restaurant })}
+      onPress={() => handleSelectRestaurant(restaurant)}
       style={{
         borderRadius: wp(3),
         padding: wp(2),
