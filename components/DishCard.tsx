@@ -1,14 +1,17 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, View } from "react-native";
+import * as Icon from "react-native-feather";
 import {
   heightPercentageToDP as hp,
+  widthPercentageToDP,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import { themeColors } from "~/theme/themeColors";
 import { DishType } from "~/types/restaurants";
+
 function DishCard({ dish }: { dish: DishType }) {
   return (
-    <TouchableOpacity
+    <View
       className=" rounded-xl shadow-md bg-white mb-3"
       style={{
         borderRadius: wp(3),
@@ -32,13 +35,38 @@ function DishCard({ dish }: { dish: DishType }) {
             source={dish.image}
           />
         </View>
-        <View>
-          <Text>{dish.name}</Text>
-          <Text>{dish.description}</Text>
-          <Text>{dish.price}</Text>
+        <View className="flex-1 gap-3">
+          <Text className="text-xl font-bold">{dish.name}</Text>
+          <Text className="">{dish.description}</Text>
+          <View className="flex-row justify-between items-end flex-1">
+            <Text className="text-xl font-bold">$ {dish.price}</Text>
+            <View className="flex-row items-center">
+              <Icon.Minus
+                style={{
+                  backgroundColor: themeColors.bgColor(2),
+                  borderRadius: 50,
+                  padding: widthPercentageToDP(3.5),
+                }}
+                width={15}
+                height={15}
+                stroke="white"
+              />
+              <Text className="text-xl mx-3">0</Text>
+              <Icon.Plus
+                style={{
+                  backgroundColor: themeColors.bgColor(2),
+                  borderRadius: 50,
+                  padding: widthPercentageToDP(3.5),
+                }}
+                width={15}
+                height={15}
+                stroke="white"
+              />
+            </View>
+          </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
